@@ -17,7 +17,7 @@ MBAGPT is a chat application that leverages the power of GPT-3.5-turbo to provid
 1. Clone the repository:
 
 ```
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/wombyz/MBAGPT.git
 ```
 
 2. Install the required dependencies:
