@@ -33,7 +33,15 @@ pip install -r requirements.txt
 - Set your OpenAI API key (required) and pinecone creds (optional) in the secrets.toml file or as an environment variable.
 - Update the code in the app to use the correct method for accessing the API key.
 
-4. Run the application:
+4. Run the indexing script to create the vector databases:
+
+```
+python indexing.py
+```
+
+This script will create the Buffet and Branson vector databases by indexing the documents. Make sure to have the necessary PDF documents in the appropriate directories (`./docs/buffett/` and `./docs/branson/`) before running the script.
+
+5. Run the application:
 
 ```
 streamlit run app.py
