@@ -15,9 +15,11 @@ persist_directory = 'db'
 
 buffett_loader = DirectoryLoader('./docs/buffett/', glob="*.pdf")
 branson_loader = DirectoryLoader('./docs/branson/', glob="*.pdf")
+hormozi_loader = DirectoryLoader('./docs/hormozi/', glob="*.pdf")
 
 buffett_docs = buffett_loader.load()
 branson_docs = branson_loader.load()
+hormozi_docs = hormozi_loader.load()
 
 embeddings = OpenAIEmbeddings()
 text_splitter = CharacterTextSplitter(chunk_size=250, chunk_overlap=8)
@@ -25,10 +27,13 @@ text_splitter = CharacterTextSplitter(chunk_size=250, chunk_overlap=8)
 # Split documents and generate embeddings
 buffett_docs_split = text_splitter.split_documents(buffett_docs)
 branson_docs_split = text_splitter.split_documents(branson_docs)
+hormozi_docs_split = text_splitter.split_documents(hormozi_docs)
 
 # Create Chroma instances and persist embeddings
 buffettDB = Chroma.from_documents(buffett_docs_split, embeddings, persist_directory=os.path.join(persist_directory, 'buffett'))
 buffettDB.persist()
 
 bransonDB = Chroma.from_documents(branson_docs_split, embeddings, persist_directory=os.path.join(persist_directory, 'branson'))
+bransonDB.persist()
+hormoziDB = Chroma.from_documents(hormozi_docs_split, embeddings, persist_directory=os.path.join(persist_directory, 'hormozi'))
 bransonDB.persist()
